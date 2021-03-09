@@ -280,3 +280,7 @@ class TestCli(TestCase):
         mql5.AccountInfoAll.return_value = None
         res = self.runner.invoke(cli.account)
         self.assertEqual(res.exit_code, 1)
+
+    def test_saida_do_mtclistart(self):
+        res = self.runner.invoke(cli.start, [])
+        self.assertEqual(res.output, "O mtcli foi configurado com sucesso!\n")

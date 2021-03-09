@@ -240,3 +240,8 @@ cli.add_command(fib)
 # cli.add_command(orders)
 # cli.add_command(positions)
 # cli.add_command(cancel)
+
+
+@click.command()
+def start():
+    click.echo("O mtcli foi configurado com sucesso!")
