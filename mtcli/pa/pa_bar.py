@@ -11,6 +11,7 @@ class Bar(object):
         self.low = float(ohlc[3])
         self.close = float(ohlc[4])
         self.volume = int(ohlc[5])
+        self.volume_real = int(ohlc[6])
         self.datetime = ohlc[0]
         self.date = self.__get_date()
         self.range = self.__get_range()
