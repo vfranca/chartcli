@@ -79,16 +79,16 @@ lbl_gap = "G"
 lbl_fbo = ""
 
 # Nome da barra ascendente (up bar)
-lbl_asc = "ASC"
+up_bar = lbl_asc = "ASC"
 
 # Nome da barra descendente (down bar)
-lbl_desc = "DESC"
+down_bar = lbl_desc = "DESC"
 
 # Nome da barra externa (outside bar)
-lbl_ob = "OB"
+outside_bar = lbl_ob = "OB"
 
 # Nome da barra interna (inside bar)
-lbl_ib = "IB"
+inside_bar = lbl_ib = "IB"
 
 # Percentual do corpo da barra de rompimento
 percentual_rompimento = getenv("PERCENTUAL_ROMPIMENTO")
