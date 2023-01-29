@@ -3,12 +3,8 @@
 # http://github.com/vfranca
 import click
 from mtcli.csv_data import get_data
-from mtcli import views as _view
-from mtcli.pa import helpers as helper
-from mtcli.pa.pa_bar import Bar
-from mtcli.pa.pa_one_bar import OneBar
-from mtcli.pa.pa_two_bars import TwoBars
 from mtcli.conf import csv_path, digits as d
+from mtcli.paction import type_bar
 
 
 # Cria o comando bars
@@ -45,12 +41,27 @@ def bars(symbol, view, period, count, date):
     # Prepara a string de exibição no formato completo
     # ASC CP VERDE75 G2.5 BOTTOM20 35.00 30.00 32.00M32.50 5.00 2.50%
     view_full = "%s %s %s%i %s %s %.{0}f %.{1}f %.{2}fM%.{3}f".format(d, d, d, d)
+    # Definições em barras consecutivas
+    list_h = []
+    list_l = []
+    for k, v in dict_rates.items():
+        h = float(v[1])
+        l = float(v[2])
+        # Define o tipo da barra
+        list_h.append(h)
+        list_l.append(l)
+        if len(list_h) == 2:
+            type = type_bar(list_h, list_l)
+            list_h.pop(0)
+            list_l.pop(0)
+        else:
+            type = ""
+        # Adiciona o tipo da barra ao dicionário de cotações
+        dict_rates[k].append(type)
     # Exibe as barras no formato mínimo
     if view and view.lower() == "ch":
         for v in dict_rates.values():
-            click.echo(
-                view_min % ("asc".upper(), float(v[1]), float(v[2]), float(v[3]))
-            )
+            click.echo(view_min % (v[6].upper(), float(v[1]), float(v[2]), float(v[3])))
         return 0
     # Exibe as barras no formato ranges
     if view and view.lower() == "r":
