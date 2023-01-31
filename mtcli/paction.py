@@ -22,3 +22,20 @@ def type_bar(h, l):
     # máxima mais baixa ou igual e mínima mais alta ou igual
     if h[1] <= h[0] and l[1] >= l[0]:
         return inside_bar
+
+
+# Calcula o gap de fechamento
+def gap_fechamento(c, h, l):
+    """Retorna a string do gap de fechamento."""
+    c1, c2 = c
+    # Calcula o gap de fechamento da maxima anterior
+    h1, h2 = h
+    if c2 > h1:
+        gap = c2 - h1
+        return "G" + str(gap)
+    # Calcula o gap de fechamento da mínima anterior
+    l1, l2 = l
+    if c2 < l1:
+        gap = c2 - l1
+        return "G" + str(gap)
+    return ""
