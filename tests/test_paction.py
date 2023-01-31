@@ -1,5 +1,7 @@
 import pytest
-from mtcli.paction import type_bar, gap_fechamento
+from mtcli.paction import type_bar
+from mtcli.paction import gap_fechamento
+from mtcli.paction import variacao_percentual
 
 
 def test_barra_com_maxima_e_minima_mais_alta():
@@ -40,3 +42,15 @@ def test_fechamento_gap_da_minima_anterior():
 
 def test_fechamento_sem_gap():
     assert gap_fechamento([10, 10], [15, 20], [5, 1]) == ""
+
+
+def test_variacao_positiva_entre_fechamentos():
+    assert variacao_percentual([10.00, 10.20]) == "2.0%"
+
+
+def test_variacao_negativa_entre_fechamentos():
+    assert variacao_percentual([10.00, 9.80]) == "-2.0%"
+
+
+def test_sem_variacao_entre_fechamentos():
+    assert variacao_percentual([10.00, 10.00]) == "0.0%"

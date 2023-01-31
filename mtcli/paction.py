@@ -39,3 +39,12 @@ def gap_fechamento(c, h, l):
         gap = c2 - l1
         return "G" + str(gap)
     return ""
+
+
+# Calcula a variação percentual entre fechamentos
+def variacao_percentual(c):
+    """Retorna a string da variação percentual."""
+    c1, c2 = c
+    var = (c2 - c1) / c1 * 100
+    var = round(var, 1)
+    return str(var) + "%"
