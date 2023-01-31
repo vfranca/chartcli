@@ -4,7 +4,7 @@
 import click
 from mtcli.csv_data import get_data
 from mtcli.conf import csv_path, digits as d
-from mtcli.paction import tipo_barra, gap_fechamento, variacao_percentual
+from mtcli.paction import tipo_barra, gap_fechamento, variacao_percentual, range_barra
 
 
 # Cria o comando bars
@@ -60,8 +60,7 @@ def bars(symbol, view, period, count, date):
             gap = gap_fechamento(list_c, list_h, list_l)
             # Calcula a variação percentual
             vp = variacao_percentual(list_c)
-            list_h.pop(0)
-            list_l.pop(0)
+            list_h.pop(0); list_l.pop(0); list_c.pop(0)
         else:
             barra = ""
             gap = ""
@@ -79,8 +78,11 @@ def bars(symbol, view, period, count, date):
         return 0
     # Exibe as barras no formato ranges
     if view and view.lower() == "r":
+        f_range = 0
         for v in dict_rates.values():
-            click.echo(view_ranges % (v[6].upper(), float(v[1]) - float(v[2])))
+            h, l = float(v[1]), float(v[2])
+            f_range = range_barra(h, l)
+            click.echo(view_ranges % (v[6].upper(), f_range))
         return 0
     # Exibe as barras no formato completo
     for v in dict_rates.values():
