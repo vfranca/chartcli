@@ -4,7 +4,7 @@
 import click
 from mtcli.csv_data import get_data
 from mtcli.conf import csv_path, digits as d
-from mtcli.paction import type_bar
+from mtcli.paction import type_bar, gap_fechamento, variacao_percentual
 
 
 # Cria o comando bars
@@ -44,20 +44,34 @@ def bars(symbol, view, period, count, date):
     # Definições em barras consecutivas
     list_h = []
     list_l = []
+    list_c = []
     for k, v in dict_rates.items():
         h = float(v[1])
         l = float(v[2])
-        # Define o tipo da barra
+        c = float(v[3])
+        # Obtem os preços consecutivos
         list_h.append(h)
         list_l.append(l)
+        list_c.append(c)
         if len(list_h) == 2:
+            # Define o tipo da barra
             type = type_bar(list_h, list_l)
+            # Calcula o gap de fechamento
+            gap = gap_fechamento(list_c, list_h, list_l)
+            # Calcula a variação percentual
+            vp = variacao_percentual(list_c)
             list_h.pop(0)
             list_l.pop(0)
         else:
             type = ""
+            gap = ""
+            vp = ""
         # Adiciona o tipo da barra ao dicionário de cotações
         dict_rates[k].append(type)
+        # Adiciona o gap de fechamento ao dicionário de cotações
+        dict_rates[k].append(gap)
+        # Adiciona a variação percentual ao dicionário de cotações
+        dict_rates[k].append(vp)
     # Exibe as barras no formato mínimo
     if view and view.lower() == "ch":
         for v in dict_rates.values():
@@ -66,7 +80,7 @@ def bars(symbol, view, period, count, date):
     # Exibe as barras no formato ranges
     if view and view.lower() == "r":
         for v in dict_rates.values():
-            click.echo(view_ranges % ("asc".upper(), float(v[1]) - float(v[2])))
+            click.echo(view_ranges % (v[6].upper(), float(v[1]) - float(v[2])))
         return 0
     # Exibe as barras no formato completo
     for v in dict_rates.values():
@@ -91,11 +105,11 @@ def bars(symbol, view, period, count, date):
         click.echo(
             view_full
             % (
-                "asc".upper(),
+                v[6].upper(),
                 breakout.upper(),
                 trend_bar.upper(),
                 percentual_body,
-                "g200".upper(),
+                v[7].upper(),
                 "BOTTOM10".upper(),
                 h,
                 l,
