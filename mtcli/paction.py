@@ -48,3 +48,9 @@ def variacao_percentual(c):
     var = (c2 - c1) / c1 * 100
     var = round(var, 1)
     return str(var) + "%"
+
+
+# Calcula o range da barra
+def range_barra(h, l):
+    """Calcula o range da barra."""
+    return h - l

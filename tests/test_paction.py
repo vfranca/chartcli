@@ -2,6 +2,7 @@ import pytest
 from mtcli.paction import tipo_barra
 from mtcli.paction import gap_fechamento
 from mtcli.paction import variacao_percentual
+from mtcli.paction import range_barra
 
 
 def test_barra_com_maxima_e_minima_mais_alta():
@@ -54,3 +55,7 @@ def test_variacao_negativa_entre_fechamentos():
 
 def test_sem_variacao_entre_fechamentos():
     assert variacao_percentual([10.00, 10.00]) == "0.0%"
+
+
+def test_calcula_range_da_barra():
+    assert range_barra(115500, 113000) == 2500
