@@ -4,7 +4,7 @@
 import click
 from mtcli.csv_data import get_data
 from mtcli.conf import csv_path, digits as d
-from mtcli.paction import type_bar, gap_fechamento, variacao_percentual
+from mtcli.paction import tipo_barra, gap_fechamento, variacao_percentual
 
 
 # Cria o comando bars
@@ -55,7 +55,7 @@ def bars(symbol, view, period, count, date):
         list_c.append(c)
         if len(list_h) == 2:
             # Define o tipo da barra
-            type = type_bar(list_h, list_l)
+            barra = tipo_barra(list_h, list_l)
             # Calcula o gap de fechamento
             gap = gap_fechamento(list_c, list_h, list_l)
             # Calcula a variação percentual
@@ -63,11 +63,11 @@ def bars(symbol, view, period, count, date):
             list_h.pop(0)
             list_l.pop(0)
         else:
-            type = ""
+            barra = ""
             gap = ""
             vp = ""
         # Adiciona o tipo da barra ao dicionário de cotações
-        dict_rates[k].append(type)
+        dict_rates[k].append(barra)
         # Adiciona o gap de fechamento ao dicionário de cotações
         dict_rates[k].append(gap)
         # Adiciona a variação percentual ao dicionário de cotações

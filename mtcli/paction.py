@@ -4,7 +4,7 @@
 from mtcli.conf import up_bar, down_bar, outside_bar, inside_bar
 
 # Verifica o tipo da barra
-def type_bar(h, l):
+def tipo_barra(h, l):
     """Verifica o tipo da barra."""
     # Verifica se é uma upbar
     # máxima mais alta e mínima mais alta ou igual
