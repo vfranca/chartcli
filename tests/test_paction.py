@@ -3,6 +3,7 @@ from mtcli.paction import tipo_barra
 from mtcli.paction import gap_fechamento
 from mtcli.paction import variacao_percentual
 from mtcli.paction import range_barra
+from mtcli.paction import ponto_medio
 
 
 def test_barra_com_maxima_e_minima_mais_alta():
@@ -59,3 +60,7 @@ def test_sem_variacao_entre_fechamentos():
 
 def test_calcula_range_da_barra():
     assert range_barra(115500, 113000) == 2500
+
+
+def test_calcula_o_ponto_medio_da_barra():
+    assert ponto_medio(109800, 107800) == 108800

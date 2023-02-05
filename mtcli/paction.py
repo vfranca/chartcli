@@ -54,3 +54,9 @@ def variacao_percentual(c):
 def range_barra(h, l):
     """Calcula o range da barra."""
     return h - l
+
+
+# Calcula o ponto médio da barra
+def ponto_medio(h, l):
+    """Calcula o ponto médio da barra."""
+    return (h + l) / 2
