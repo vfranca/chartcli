@@ -4,6 +4,9 @@ from mtcli.paction import gap_fechamento
 from mtcli.paction import variacao_percentual
 from mtcli.paction import range_barra
 from mtcli.paction import ponto_medio
+from mtcli.paction import corpo
+from mtcli.paction import sombra_acima
+from mtcli.paction import sombra_abaixo
 
 
 def test_barra_com_maxima_e_minima_mais_alta():
@@ -64,3 +67,23 @@ def test_calcula_range_da_barra():
 
 def test_calcula_o_ponto_medio_da_barra():
     assert ponto_medio(109800, 107800) == 108800
+
+
+def test_calcula_o_range_do_corpo():
+    assert corpo(108500, 109200) == 700
+
+
+def test_calcula_a_sombra_acima_na_barra_de_alta():
+    assert sombra_acima(110100, 108500, 109200) == 900
+
+
+def test_calcula_a_sombra_acima_na_barra_de_baixa():
+    assert sombra_acima(110100, 109200, 108500) == 900
+
+
+def test_calcula_a_sombra_abaixo_na_barra_de_alta():
+    assert sombra_abaixo(108200, 108500, 109200) == 300
+
+
+def test_calcula_a_sombra_abaixo_na_barra_de_baixa():
+    assert sombra_abaixo(108200, 109200, 108500) == 300

@@ -60,3 +60,25 @@ def range_barra(h, l):
 def ponto_medio(h, l):
     """Calcula o ponto médio da barra."""
     return (h + l) / 2
+
+
+# Calcula o corpo da barra
+def corpo(o, c):
+    """Calcula o corpo da barra."""
+    return c - o
+
+
+# Calcula a sombra acima na barra
+def sombra_acima(h, o, c):
+    """Calcula a sombra acima na barra."""
+    if o > c:
+        return h - o
+    return h - c
+
+
+# Calcula a sobra abaixo na barra
+def sombra_abaixo(l, o, c):
+    """Calcula a sombra abaixo na barra."""
+    if o > c:
+        return c - l
+    return o - l
