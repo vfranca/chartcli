@@ -60,7 +60,9 @@ def bars(symbol, view, period, count, date):
             gap = gap_fechamento(list_c, list_h, list_l)
             # Calcula a variação percentual
             vp = variacao_percentual(list_c)
-            list_h.pop(0); list_l.pop(0); list_c.pop(0)
+            list_h.pop(0)
+            list_l.pop(0)
+            list_c.pop(0)
         else:
             barra = ""
             gap = ""
