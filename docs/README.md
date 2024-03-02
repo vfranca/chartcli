@@ -7,61 +7,57 @@ O formato TXT é especialmente acessado por tecnologias assistivas para cegos.
   
 ## Pré-requisitos  
 
-* [MetaTrader 5](https://www.metatrader5.com/pt) - Plataforma de trading.  
-* [Indicador mtcli](https://tinyurl.com/vfranca-mtcli) - programa MQL5 executado no MetaTrader 5.  
-* [Python](https://www.python.org/downloads/windows) - Interpretador de comandos.  
-
+1. Windows 10 ou 11 com conta Administrador ativada.  
+2. Leitor de tela NVDA instalado.  
+  
+Para ativar a conta administrador execute o seguinte comando no terminal CMD:  
+```CMD
+net user Administrador /active:yes
+```
+    
+O mtcli não foi testado com outros leitores de tela além do NVDA.  
+  
 
 ## Instalação  
 
-1. Instalar o MetaTrader 5.  
-2. Executar o indicador mtcli.ex5 e anexar a um gráfico.  
-3. Instalar o Python:
-
-```cmd
-winget install python
+### MetaTrader 5 (mt5)
+Faça o download do MT5 e execute o instalador.  
+[clique aqui para baixar o instalador MT5para Windows](https://www.metatrader5.com/pt)  
+  
+### Indicador mtcli
+Faça o download do indicador mtcli e anexe a um gráfico  no MetaTrader 5.  
+[Clique aqui para baixar o indicador mtcli](https://tinyurl.com/vfranca-mtcli)  
+  
+### Python
+Instale o interpretador de comandos Python.  
+Execute o comando abaixo no CMD do Windows:  
+```CMD
+winget install --scope machine Python.Python.3.11
 ```
 
-4. Instalar o mtcli:
+[Clique aqui para ver outras formas de instalar o Python](python.md)
 
-```cmd
+
+### mtcli
+
+Execute o comando abaixo no CMD do Windows para instalar o mtcli:  
+```CMD
 pip install mtcli
 ```
 
-
-
-Opcionalmente baixe a pasta mtcli e descompacte os arquivos em C:\mtcli.  
-[clique aqui para fazer o download](https://tinyurl.com/vfranca-mtcli-pasta)
-
 ## Comandos  
   
-```cmd
-mt bars <codigo_do_ativo> 
-```
-Exibe as últimas 40 barras diárias  do ativo.  
-Digite mt bars --help para ver as opções.  
+comando | descrição
+:----- | :------
+[mt bars](bars.md) | exibe barras do gráfico de candles
+[mt mm](mm.md) | exibe a média móvel simples
+[mt rm](rm.md) | exibe o range médio 
+  
+Digite a opção --help para exibir um resumo das opções.  
 
-```cmd
-mt mm <codigo_do_ativo>
-```
-Exibe a média móvel simples das últimas 20 barras diárias do ativo.  
-Digite mt mm --help para ver as opções.  
+## abreviaturas  
 
-
-```cmd
-mt rm <codigo_do_ativo>
-```
-Exibe o range médio das últimas 14 barras diárias do ativo.  
-Digite mt rm --help para ver as opções.  
-
-```cmd
-mt ma <codigo_do_ativo>
-```
-Exibe as médias móveis das 20 barras diárias do código conforme exportadas pelo indicador MA_TXT.  
-Digite mt ma --help para ver as opções.  
-[Clique aqui para baixar o indicador MA_TXT](https://tinyurl.com/vfranca-ma-txt)  
-Observação: é necessário anexar o indicador MA_TXT ao gráfico e configurar para exportar as 20 barras do diário.  
-
+[Clique aqui para ver uma lista de abreviaturas exibidas nas barras](abreviaturas.md)  
 
 ## Agradecimentos  
   
