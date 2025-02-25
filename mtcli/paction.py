@@ -3,6 +3,7 @@
 # http://github.com/vfranca
 from mtcli.conf import up_bar, down_bar, outside_bar, inside_bar
 
+
 # Verifica o tipo da barra
 def tipo_barra(h, l):
     """Verifica o tipo da barra."""
