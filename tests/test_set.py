@@ -13,7 +13,7 @@ def test_exibe_uma_lista_de_variaveis_de_ambiente_disponiveis():
     res = run.invoke(mt, ["set"])
     assert (
         res.output
-        == "DIGITOS=0\nLATERAL=DOJI\nALTA=VERDE\nBAIXA=VERMELHO\nROMPIMENTO_ALTA=CP\nROMPIMENTO_BAIXA=VD\nPERCENTUAL_DOJI=10\nPERCENTUAL_ROMPIMENTO=50\nMT5_PASTA=C:/Users/Administrador/git/mtcli/tests/fixtures/Files\n"
+        == "DIGITOS=0\nLATERAL=DOJI\nALTA=VERDE\nBAIXA=VERMELHO\nROMPIMENTO_ALTA=CP\nROMPIMENTO_BAIXA=VD\nPERCENTUAL_DOJI=10\nPERCENTUAL_ROMPIMENTO=50\nMT5_PASTA=C:/Users/Administrador/cli/mtcli/tests/fixtures/Files\n"
     )
 
 
@@ -60,9 +60,9 @@ def test_altera_o_percentual_do_corpo_da_barra_de_rompimento():
 def test_altera_o_caminho_da_pasta_do_mt5():
     res = run.invoke(
         mt,
-        ["set", "--mt5-pasta", "C:/Users/Administrador/git/mtcli/tests/fixtures/Files"],
+        ["set", "--mt5-pasta", "C:/Users/Administrador/cli/mtcli/tests/fixtures/Files"],
     )
     assert (
         res.output
-        == "MT5_PASTA=C:/Users/Administrador/git/mtcli/tests/fixtures/Files\n"
+        == "MT5_PASTA=C:/Users/Administrador/cli/mtcli/tests/fixtures/Files\n"
     )

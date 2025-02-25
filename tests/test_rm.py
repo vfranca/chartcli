@@ -11,5 +11,5 @@ run = CliRunner()
 
 def test_exibe_o_range_medio_do_diario():
     res = run.invoke(mt, ["rm", "ibov"])
-    assert res.output == "1926.0\n"
+    assert res.output == "1925.79\n"
     assert res.exit_code == 0

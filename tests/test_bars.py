@@ -11,7 +11,7 @@ run = CliRunner()
 
 def test_exibe_o_grafico_no_formato_minimo():
     res = run.invoke(mt, ["bars", "ibov", "--view", "ch", "--count", "1"])
-    assert res.output == " 114191 112044 112316\n"
+    assert res.output == " 114191.00 112044.00 112316.00\n"
 
 
 # def test_exibe_o_grafico_no_formato_ranges():
